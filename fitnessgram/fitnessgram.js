@@ -27,18 +27,14 @@ var gameOver = false;
 
 
 
-var background; = 
+var background;
 
 var player;
 var instructions;
 
-const ding = new Audio();
-ding.volume = 1;
+var ding; 
 
-const music = new Audio("assets/audio/music.mp3");
-music.onended = function () {
-    music.play();
-};
+const music;
 
 
 var direction = "E";
@@ -52,19 +48,30 @@ window.onload = function () {
     player.src = "assets/E/idle.png";
 
     instructions = new Audio();
-audio.src = "assets/audio/instructions.mp3";
-instructions.onplay = function () {
-    instructionsPlaying = true;
-};
-instructions.onended = function () {
-    instructionsPlaying = false;
-    running = true;
-    music.play();
-    setInterval(function () {
-        player.src = "assets/" + direction + "/idle.png";
-    }, 1000);
-    setTimeout(gameplayLoop, waitingPeriod * 1000);
-};
+    instructions.src = "assets/audio/instructions.mp3";
+    instructions.onplay = function () {
+        instructionsPlaying = true;
+    };
+    
+    instructions.onended = function () {
+        instructionsPlaying = false;
+        running = true;
+        music.play();
+        setInterval(function () {
+            player.src = "assets/" + direction + "/idle.png";
+        }, 1000);
+        setTimeout(gameplayLoop, waitingPeriod * 1000);
+    };
+
+    ding = new Audio();
+    
+    ding.volume = 1;
+
+     music = new Audio("assets/audio/music.mp3");
+     music.onended = function () {
+        music.play();
+    };
+
     
     // initialize screen n shit
     screen = document.getElementById("screen");
