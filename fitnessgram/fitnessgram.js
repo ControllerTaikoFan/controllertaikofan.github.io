@@ -34,7 +34,7 @@ var instructions;
 
 var ding; 
 
-const music;
+var music;
 
 
 var direction = "E";
