@@ -42,13 +42,13 @@ var direction = "E";
 window.onload = function () {
     // initialize images n shit
     background = new Image();
-    background.src = "assets/bg.png";
+    background.src = "./assets/bg.png";
 
     player = new Image();
-    player.src = "assets/E/idle.png";
+    player.src = "./assets/E/idle.png";
 
     instructions = new Audio();
-    instructions.src = "assets/audio/instructions.mp3";
+    instructions.src = "./assets/audio/instructions.mp3";
     instructions.onplay = function () {
         instructionsPlaying = true;
     };
@@ -58,7 +58,7 @@ window.onload = function () {
         running = true;
         music.play();
         setInterval(function () {
-            player.src = "assets/" + direction + "/idle.png";
+            player.src = "./assets/" + direction + "/idle.png";
         }, 1000);
         setTimeout(gameplayLoop, waitingPeriod * 1000);
     };
@@ -67,7 +67,7 @@ window.onload = function () {
     
     ding.volume = 1;
 
-     music = new Audio("assets/audio/music.mp3");
+     music = new Audio("./assets/audio/music.mp3");
      music.onended = function () {
         music.play();
     };
