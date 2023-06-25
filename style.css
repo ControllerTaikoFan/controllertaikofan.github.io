@@ -1,34 +1,9 @@
 body {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
     background-color: #404040;
-    color:azure
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding-left: auto;
-    justify-items: center;
-}
-
-.grid-item {
-    --length: 500px;
-    width: var(--length);
-    height: var(--length);
-
-    overflow: hidden;
-}
-
-
-
-#snake, #piano {
-    height: 300px;
-}
-
-#fitnessgram {
-    width: 500px;
+    color: azure
 }
 
 
@@ -37,14 +12,28 @@ body {
 .navbar {
     background-color: #373dad;
     overflow: hidden;
-    padding-left: 5px;
+    padding: 0;
 }
 
 .navbar a {
-    text-align:center;
+    text-align: center;
     text-decoration: none;
     float: left;
-    color:white;
-    font-size: 3dvh;
+    color: white;
+    font-size: 20px;
+    overflow: hidden;
+    padding: 18px 20px;
+}
 
+.navbar a:hover{
+    background-color:#242875;
+}
+
+.navbar a#icon {
+    padding: 0;
+}
+
+.navbar a#icon img {
+    vertical-align: middle;
+    height: 60px;
 }

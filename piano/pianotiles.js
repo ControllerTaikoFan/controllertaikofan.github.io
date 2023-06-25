@@ -1,7 +1,7 @@
 var screen;
 var ctx;
 var screenWidth = 480;
-var screenHeight = 944;
+var screenHeight = 904;
 var gameOver = false;
 var rows = []; // stores the notes that are placed on each row
 // the value of an element represents the column the note goes in, while its index represents the row it goes in

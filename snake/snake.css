@@ -1,7 +1,39 @@
 body{
-    font-family:"comic sans MS";
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align:center;
+    background-color: #404040;
+    color: azure;
+    margin:0;
 }
 canvas{
     border-style:solid;
+}
+
+.navbar {
+    background-color: #373dad;
+    overflow: hidden;
+    padding: 0;
+}
+
+.navbar a {
+    text-align: center;
+    text-decoration: none;
+    float: left;
+    color: white;
+    font-size: 20px;
+    overflow: hidden;
+    padding: 18px 20px;
+}
+
+.navbar a:hover{
+    background-color:#242875;
+}
+
+.navbar a#icon {
+    padding: 0;
+}
+
+.navbar a#icon img {
+    vertical-align: middle;
+    height: 60px;
 }
