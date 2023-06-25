@@ -27,27 +27,10 @@ var gameOver = false;
 
 
 
-const background = new Image();
-background.src = "assets/bg.png";
+var background; = 
 
-const player = new Image();
-player.src = "assets/E/idle.png";
-
-const instructions = new Audio("assets/audio/instructions.mp3");
-instructions.onplay = function () {
-    instructionsPlaying = true;
-
-
-};
-instructions.onended = function () {
-    instructionsPlaying = false;
-    running = true;
-    music.play();
-    setInterval(function () {
-        player.src = "assets/" + direction + "/idle.png";
-    }, 1000);
-    setTimeout(gameplayLoop, waitingPeriod * 1000);
-};
+var player;
+var instructions;
 
 const ding = new Audio();
 ding.volume = 1;
@@ -61,6 +44,28 @@ music.onended = function () {
 var direction = "E";
 
 window.onload = function () {
+    // initialize images n shit
+    background = new Image();
+    background.src = "assets/bg.png";
+
+    player = new Image();
+    player.src = "assets/E/idle.png";
+
+    instructions = new Audio();
+audio.src = "assets/audio/instructions.mp3";
+instructions.onplay = function () {
+    instructionsPlaying = true;
+};
+instructions.onended = function () {
+    instructionsPlaying = false;
+    running = true;
+    music.play();
+    setInterval(function () {
+        player.src = "assets/" + direction + "/idle.png";
+    }, 1000);
+    setTimeout(gameplayLoop, waitingPeriod * 1000);
+};
+    
     // initialize screen n shit
     screen = document.getElementById("screen");
     screen.width = screenWidth;
