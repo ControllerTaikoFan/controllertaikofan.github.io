@@ -29,7 +29,6 @@ window.onload = function () {
         currentNote = 1;
         restart.style.visibility = "hidden";
     });
-
     toggle = document.getElementById("toggle");
     toggle.addEventListener("click", function () {
         if (doubles) {
@@ -43,6 +42,12 @@ window.onload = function () {
         }
     });
 
+
+    // preload note sounds
+
+    for (let i = 1; i < 19; i++) {
+        new Audio("notes/" + i + ".mp3");
+    }
     /*
     code for scaling the canvas dimensions based on browser width and height
 
@@ -63,6 +68,8 @@ window.onload = function () {
             keyPressed(e);
         }
     });
+
+    
     setInterval(updateWindow, 10);
 
 
