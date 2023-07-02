@@ -3,18 +3,16 @@ body {
     text-align: center;
     margin: 0;
     background-color: #404040;
-    color: azure
-}
-
-#listitems {
-    margin: auto;
-    width: 50%;
-    text-align: left;
-}
-
-a {
     color: azure;
+    margin: 0;
 }
+
+canvas {
+    margin: 0
+}
+
+
+
 
 .navbar {
     background-color: #373dad;
@@ -39,6 +37,7 @@ a {
 .navbar a#icon {
     padding: 0;
 }
+
 
 .navbar a#icon img {
     vertical-align: middle;

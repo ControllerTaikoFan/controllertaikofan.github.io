@@ -21,9 +21,11 @@ body {
     overflow: hidden;
 }
 
+a {
+    color:azure
+}
 
-
-#snake, #piano {
+#snake, #piano, #flappy {
     height: 300px;
 }
 
