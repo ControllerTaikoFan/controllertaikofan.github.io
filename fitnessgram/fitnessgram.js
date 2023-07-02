@@ -68,12 +68,18 @@ window.onload = function () {
     ctx = screen.getContext("2d");
 
 
-    document.addEventListener("click", function (e) { 
-        clicked = true;
+    document.addEventListener("mouseup", function (e) { 
+        clicked = false;
         run("click"); // not a built-in function surprise surprise
+        
 
 
     });
+
+    document.addEventListener("mousedown", function() {
+        clicked = true;
+    });
+
 
     document.addEventListener("mousemove", function (e) {
         getMouseCoords(e);
@@ -104,6 +110,7 @@ function gameplayLoop() {
         lives -= 1;
         if (lives === 0) {
             gameOver = true;
+            clicked = false;
             menu = "game over";
             setTimeout(() => {
                 music.pause();
@@ -132,7 +139,7 @@ function run(e) {
                 document.getElementById("body").style.userSelect = "none"; // to prevent text from being selected
 
                 if (e.code === "Space" || e === "click") {
-
+                    
                     if (runFrame === 1) {
                         player.src = "assets/" + direction + "/running.png";
                         runFrame = 2;
@@ -171,7 +178,7 @@ function run(e) {
                         running = false;
                     }
 
-
+                    
 
                 }
 
@@ -220,6 +227,11 @@ function updateScreen() {
     }
 
     else if (menu === "choose difficulty") {
+        running = false;
+        waitingPeriod = 6;
+        direction = "E";
+        gameOver = false;
+        lives = 2;
         ctx.fillStyle = "black"
         ctx.fillRect(0, 0, screenWidth, screenHeight);
 
@@ -304,7 +316,33 @@ function updateScreen() {
         ctx.fillStyle = "white";
         ctx.font = "48px arial";
         ctx.textAlign = "center";
-        ctx.fillText("get good loser", screenWidth / 2, screenHeight / 2);
+        ctx.fillText("Test over! \n Score: " + lap, screenWidth / 2, screenHeight / 2);
+
+        if (mouseX >= 250 && mouseX <= 350 &&
+            mouseY >= 200 && mouseY <= 300) { // if mouse is over "replay" button
+            ctx.fillStyle = "darkred";
+            if (clicked) {
+                menu = "choose difficulty";
+                playerX = 30;
+                level = 1;
+                lap = 0;
+                clicked = false;
+            }
+        }
+        else {
+            ctx.fillStyle = "red";
+        }
+
+        
+        ctx.fillRect(250, 200, 100, 50);
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+
+        ctx.font = "20px arial";
+        ctx.fillText("replay", 300, 230);
+
+        
+
     }
 
     else if (menu === "complete") {
