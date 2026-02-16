@@ -101,6 +101,17 @@ function check(solution, solutionLetterCount, line) {
     for (const word of dictionary) {
 
         if (word == solution) {
+            let solutionValid = true;
+            console.log(line)
+            for (let i = 0; i < 5; i++) {
+                if (line[i] != "G") {
+                    solutionValid = false;
+                }
+            }
+            if (solutionValid) {
+                found_word = solution;
+                break;
+            }
             continue;
         }
         let wordLetterCount = new Map();
