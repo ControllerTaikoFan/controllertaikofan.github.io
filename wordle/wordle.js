@@ -29,6 +29,7 @@ function readFile() {
 
 
 const url = "https://raw.githubusercontent.com/ControllerTaikoFan/controllertaikofan.github.io/refs/heads/main/wordle/dictionary/dictionary.txt"
+fetch(url)
     .then(r => r.text())
     .then(t => {
         dictionary = t.split("\n");
