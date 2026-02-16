@@ -20,15 +20,307 @@
         <a href="../about/about">About</a>
     </div>
 
-    <div class="grid-container">
-        <input type="file" id="dictInput" /><br />
-        <p class="content"></p>
-        <br/>
-        <input type = "text" id="textInput"/>
-        <button id="theButton">enter</button>
-    </div>
-    </div>
- <script src="wordle.js"></script>
+    <h1>Wordle Pattern Maker</h1>
+    <p>Create your own patterns using Wordle guesses!</p>
+    <hr>
+    <br>
+        <table>
+        <tr>
+            <td id = "a">
+                <div id="instructions-container">
+                    <p>Enter the solution word:</p>
+                    <input type="text" id="textInput" />
+                    <button id="theButton">Generate pattern!</button>
+                    <div id=instructions>
+                        <h2>Instructions:</h2>
+                        <p>Click on each tile to select the color you want it to be.</p>
+                        <p>Then, type in the answer for the wordle and click "Generate pattern" above.</p>
+                        <p>A red dot means that no word exists with the given pattern.</p>
+                        <p></p>
+                        <br>
+                        <div class="instructions-tiles">
+                            <img src="assets/gray.png" class="instructions-image">
+                            <p>Letter is not in the word</p>
+                        </div>
+
+                        <div class="instructions-tiles">
+                            <img src="assets/yellow.png" class="instructions-image">
+                            <p>Letter is in the word, but in the wrong spot</p>
+                        </div>
+
+                        <div class="instructions-tiles">
+                            <img src="assets/green.png" class="instructions-image">
+                            <p>Letter is in the word and in the right spot</p>
+                        </div>
+
+                        <div class="instructions-tiles">
+                            <img src="assets/any.png" class="instructions-image">
+                            <p>Letter can be either yellow or green</p>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div id="wordle-container">
+                    <table id="wordle-grid">
+                        <tr class="wordle-row">
+                            <td class="wordle-cell">
+                                <div class="tail-cell">
+                                    <img class="tail-indicator" id="error-a" src="assets/error-indicator.png"
+                                        title="Word not found!">
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="a0">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="a1">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="a2">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="a3">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="a4">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="refresh-cell">
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr class="wordle-row">
+                            <td class="wordle-cell">
+                                <div class="tail-cell">
+                                    <img class="tail-indicator" id="error-b" src="assets/error-indicator.png"
+                                        title="Word not found!">
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="b0">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="b1">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="b2">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="b3">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="b4">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr class="wordle-row">
+                            <td class="wordle-cell">
+                                <div class="tail-cell">
+                                    <img class="tail-indicator" id="error-c" src="assets/error-indicator.png"
+                                        title="Word not found!">
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="c0">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="c1">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="c2">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="c3">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="c4">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr class="wordle-row">
+                            <td class="wordle-cell">
+                                <div class="tail-cell">
+                                    <img class="tail-indicator" id="error-d" src="assets/error-indicator.png"
+                                        title="Word not found!">
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="d0">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="d1">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="d2">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="d3">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="d4">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr class="wordle-row">
+                            <td class="wordle-cell">
+                                <div class="tail-cell">
+                                    <img class="tail-indicator" id="error-e" src="assets/error-indicator.png"
+                                        title="Word not found!">
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="e0">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="e1">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="e2">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="e3">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="e4">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        <tr class="wordle-row">
+                            <td class="wordle-cell">
+                                <div class="tail-cell">
+                                    <img class="tail-indicator" id="error-f" src="assets/error-indicator.png"
+                                        title="Word not found!">
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="f0">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="f1">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="f2">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="f3">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+                            <td class="wordle-cell">
+                                <div class="tile" id="f4">
+                                    <img class="tile-image" src="assets/gray.png">
+                                    <p class="tile-text"></p>
+                                </div>
+                            </td>
+
+                        </tr>
+
+
+
+
+                    </table>
+                </div>
+            </td>
+            <td></td>
+        </tr>
+    
+    
+
+
+    <script src="wordle.js"></script>
 </body>
 
 </html>

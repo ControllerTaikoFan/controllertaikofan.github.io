@@ -7,45 +7,6 @@ body {
 }
 
 
-#screen {
-
-    text-align: center;
-
-    border-style: none;
-
-    top: 0;
-    bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    border-bottom: solid;
-}
-
-#restart {
-    margin: 100px;
-    text-align: center;
-    width: 100px;
-    height: 50px;
-    background-color: red;
-    visibility: hidden;
-    
-}
-
-#restart:hover {
-    background-color: brown;
-}
-
-#keybinds{
-    line-height: 500px;
-}
-.grid-container {
-    /* LOL THAT WORKED???? */
-    display: grid;
-    grid-template-columns: auto auto auto;
-
-    column-gap: 50px;
-}
 
 .navbar {
     background-color: #373dad;
@@ -63,8 +24,8 @@ body {
     padding: 18px 20px;
 }
 
-.navbar a:hover{
-    background-color:#242875;
+.navbar a:hover {
+    background-color: #242875;
 }
 
 .navbar a#icon {
@@ -74,4 +35,99 @@ body {
 .navbar a#icon img {
     vertical-align: middle;
     height: 60px;
+}
+
+
+
+#instructions {
+    text-align: left;
+    position: relative;
+    left: 1em;
+}
+
+#instructions-container {
+    border-right: solid;
+}
+
+.instructions-image {
+    width: 10%;
+    height: 10%;
+}
+
+.instructions-tiles {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+
+#a {
+    width: 20%;
+}
+
+#wordle-grid {
+    text-align: center;
+
+    display: table;
+    top: 0;
+    bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 5px;
+    border-spacing: 0.5em 0.5em;
+
+}
+
+
+#wordle-container {}
+
+
+
+
+
+
+.wordle-cell {
+    width: 4em;
+    height: 4em;
+}
+
+.wordle-row {
+    display: table-row;
+
+}
+
+.tail-cell {
+    width: 1em;
+}
+
+.tail-indicator {
+    max-width: 100%;
+    height: auto;
+    visibility: hidden;
+}
+
+.tile {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.tile-image {
+    position: relative;
+    height: 1%;
+}
+
+.tile-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    position: absolute;
+
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

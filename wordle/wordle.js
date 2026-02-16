@@ -1,9 +1,10 @@
 let dictionary = []
-const fileInput = document.querySelector("#dictInput");
 const solutionWordInput = document.querySelector("#textInput");
 const enterButton = document.querySelector("#theButton");
 
-fileInput.addEventListener("change", readFile);
+const wordleGrid = document.getElementById("wordle-grid");
+const allTiles = wordleGrid.querySelectorAll(".tile");
+const rows = ["a", "b", "c", "d", "e", "f"];
 
 enterButton.addEventListener("click", determineWord);
 
@@ -13,7 +14,7 @@ function readFile() {
 
     reader.addEventListener("load", () => {
         // this will then display a text file
-        dictionary = reader.result.split("\n");
+
 
     });
 
@@ -22,13 +23,55 @@ function readFile() {
     }
 }
 
+
+
+
+
+
+const url = "https://raw.githubusercontent.com/ControllerTaikoFan/controllertaikofan.github.io/refs/heads/main/wordle/dictionary/dictionary.txt"
+fetch(url)
+    .then(r => r.text())
+    .then(t => {
+        dictionary = t.split("\n");
+    });
+
 let pattern = [
-    "G_GGG",
-    "G_G__",
-    "YYYYY",
-    "__G_G",
-    "GGG_G"
+    ["_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_"],
+    ["_", "_", "_", "_", "_"]
 ]
+
+syncPatternAndGrid();
+
+
+allTiles.forEach(child => {
+    child.addEventListener("click", function () {
+        const tileRow = rows.indexOf(child.id[0]);
+        const tileCol = Number(child.id[1]);
+        const tileImage = child.querySelector(".tile-image");
+        switch (pattern[tileRow][tileCol]) {
+            case "_":
+                tileImage.src = "assets/yellow.png";
+                pattern[tileRow][tileCol] = "Y";
+                break;
+            case "Y":
+                tileImage.src = "assets/green.png";
+                pattern[tileRow][tileCol] = "G";
+                break;
+            case "G":
+                tileImage.src = "assets/any.png";
+                pattern[tileRow][tileCol] = "X";
+                break;
+            case "X":
+                tileImage.src = "assets/gray.png";
+                pattern[tileRow][tileCol] = "_";
+                break;
+        }
+    })
+});
 
 
 function determineWord() {
@@ -45,12 +88,12 @@ function determineWord() {
     }
 
     for (const line of pattern) {
-        console.log(line)
         let patternWord = check(solutionWord, letterCount, line);
         solutionPattern.push(patternWord);
-
     }
-    console.log(solutionPattern)
+
+    displayResults(solutionPattern);
+
 }
 
 function check(solution, solutionLetterCount, line) {
@@ -117,4 +160,45 @@ function check(solution, solutionLetterCount, line) {
 
 
     return found_word;
+}
+
+function displayResults(pattern) {
+    // assume pattern is a 5x6 array
+    for (let i = 0; i < 6; i++) {
+        if (pattern[i] !== "") {
+            for (let j = 0; j < 5; j++) {
+                document.getElementById("error-" + rows[i]).style.visibility = "hidden";
+                document.getElementById(rows[i] + j).querySelector(".tile-text").innerText = pattern[i][j].toUpperCase();
+            }
+        } else {
+            console.log("error-" + rows[i])
+            document.getElementById("error-" + rows[i]).style.visibility = "visible";
+            for (let j = 0; j < 5; j++) {
+                document.getElementById(rows[i] + j).querySelector(".tile-text").innerText = "";
+            }
+        }
+
+    }
+}
+
+function syncPatternAndGrid() {
+    for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 5; j++) {
+            const tileImage = document.getElementById(rows[i] + j).querySelector(".tile-image")
+            switch (pattern[i][j]) {
+                case "_":
+                    tileImage.src = "assets/gray.png";
+                    break;
+                case "Y":
+                    tileImage.src = "assets/yellow.png";
+                    break;
+                case "G":
+                    tileImage.src = "assets.green.png";
+                    break;
+                case "X":
+                    tileImage.src = "assets/any.png";
+                    break;
+            }
+        }
+    }
 }
