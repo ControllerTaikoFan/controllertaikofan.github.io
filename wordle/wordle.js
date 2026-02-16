@@ -29,7 +29,6 @@ function readFile() {
 
 
 const url = "https://raw.githubusercontent.com/ControllerTaikoFan/controllertaikofan.github.io/refs/heads/main/wordle/dictionary/dictionary.txt"
-fetch(url)
     .then(r => r.text())
     .then(t => {
         dictionary = t.split("\n");
@@ -76,7 +75,7 @@ allTiles.forEach(child => {
 
 function determineWord() {
     let solutionPattern = [];
-    const solutionWord = solutionWordInput.value;
+    const solutionWord = solutionWordInput.value.trim().toLowerCase();
 
     let letterCount = new Map();
     for (const letter of solutionWord) {
@@ -102,7 +101,6 @@ function check(solution, solutionLetterCount, line) {
 
         if (word == solution) {
             let solutionValid = true;
-            console.log(line)
             for (let i = 0; i < 5; i++) {
                 if (line[i] != "G") {
                     solutionValid = false;
@@ -182,7 +180,6 @@ function displayResults(pattern) {
                 document.getElementById(rows[i] + j).querySelector(".tile-text").innerText = pattern[i][j].toUpperCase();
             }
         } else {
-            console.log("error-" + rows[i])
             document.getElementById("error-" + rows[i]).style.visibility = "visible";
             for (let j = 0; j < 5; j++) {
                 document.getElementById(rows[i] + j).querySelector(".tile-text").innerText = "";
