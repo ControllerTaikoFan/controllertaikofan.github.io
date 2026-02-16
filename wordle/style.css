@@ -65,6 +65,10 @@ body {
     width: 20%;
 }
 
+#wordle-container {
+    user-select: none;
+}
+
 #wordle-grid {
     text-align: center;
 
@@ -104,6 +108,7 @@ body {
     width: 2em;
     visibility: hidden;
 }
+
 .tile {
     position: relative;
 

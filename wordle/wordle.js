@@ -96,7 +96,6 @@ for (let i = 0; i < 6; i++) {
                 letterCount.set(letter, 1);
             }
         }
-        console.log(triedWords[i])
         let word = check(solutionWord, letterCount, pattern[i], triedWords[i]);
         if (word == triedWords[i][0]) {
             triedWords[i] = [word];
@@ -164,7 +163,6 @@ function check(solution, solutionLetterCount, line, forbiddenWords) {
     let found_word = ""
     for (const word of dictionary) {
         if (forbiddenWords.includes(word)) {
-            console.log('aspdokaspjikod')
             continue;
         }
         if (word == solution) {
@@ -172,10 +170,11 @@ function check(solution, solutionLetterCount, line, forbiddenWords) {
             for (let i = 0; i < 5; i++) { // check if the line is all green
                 if (line[i] != "G") {
                     solutionValid = false;
+                    break;
                 }
             }
             if (solutionValid) {
-                return found_word;
+                return word;
             }
             continue;
         }
@@ -241,7 +240,6 @@ function check(solution, solutionLetterCount, line, forbiddenWords) {
     }
 
     if (found_word === "") {
-        console.log("aopksjd")
         if (forbiddenWords.length > 0) {
             found_word = forbiddenWords[0];
         }
