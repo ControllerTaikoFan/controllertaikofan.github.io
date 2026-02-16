@@ -80,14 +80,6 @@ body {
 
 }
 
-
-#wordle-container {}
-
-
-
-
-
-
 .wordle-cell {
     width: 4em;
     height: 4em;
@@ -99,15 +91,19 @@ body {
 }
 
 .tail-cell {
-    width: 1em;
+    width: 2em;
 }
 
-.tail-indicator {
+.error-indicator {
     max-width: 100%;
     height: auto;
     visibility: hidden;
 }
 
+.refresh-indicator {
+    width: 2em;
+    visibility: hidden;
+}
 .tile {
     position: relative;
 
